@@ -13,13 +13,13 @@ const uploadPosts = async () => {
 
     for (const post of samplePosts) {
       await addDoc(postsCollection, post);
-      console.log(`✅ Post added: ${post.heading}`);
+      // console.log(`✅ Post added: ${post.heading}`);
     }
 
-    console.log("🎉 All sample posts uploaded successfully!");
+    // console.log("🎉 All sample posts uploaded successfully!");
     process.exit(0);
   } catch (err) {
-    console.error("❌ Error uploading posts:", err);
+    // console.error("❌ Error uploading posts:", err);
     process.exit(1);
   }
 };

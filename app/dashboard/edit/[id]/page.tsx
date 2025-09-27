@@ -1,19 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import posts from "../../../../components/data/posts.json";
+import { useParams, useRouter } from "next/navigation";
 import RichTextEditor from "../../../../components/RichTextEditor";
-import {  Share2, ThumbsUp } from "lucide-react";
 import getReadMinutes, { getCurrentFormattedDate } from "../../../../components/utils/funcs";
 import { fetchPostById } from "../../../../lib/fetchPostById";
 import TagMultiSelect from "../../../../components/inputs/TagMultiSelect";
 import { Post } from "../../../../schema/postSchema";
 import { toast } from "react-toastify";
 import { updatePost } from "../../../../lib/updatePost";
+import BlogPreview from "../../../../components/Preview";
+import { deletePost } from "../../../../lib/deletePost";
 
 export default function EditPost() {
     const { id } = useParams();
+    const router = useRouter();
 
   const [post, setPost] = useState<Post | null>(null);
   const [cover_previewUrl, setcover_PreviewUrl] = useState<string | null>(null);
@@ -80,6 +81,18 @@ useEffect(() => {
       // @ts-ignore
       setPost({ ...post,coverImage: file }); // store the File object
       setcover_PreviewUrl(URL.createObjectURL(file)); // preview only
+    }
+  };
+
+
+  const handleDelete = async () => {
+    const success = await deletePost(id as string);
+
+    if (success) {
+      toast.success("✅ Post deleted successfully!");
+      router.push("/dashboard/all-posts"); // redirect after successful delete
+    } else {
+      toast.error("❌ Failed to delete the post.");
     }
   };
 
@@ -154,7 +167,7 @@ useEffect(() => {
             saved != "" ?  <a href={saved}> {saved} </a> :
           
 
-            <div>
+            <div className="flex justify-between">
           {loading ? <div className="flex items-center gap-6"> <div className="animate-spin h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full"></div>
   updating post...do not close this tab.  </div>  : 
             <button
@@ -163,6 +176,8 @@ useEffect(() => {
             >
               Update Post
             </button>}
+
+            <button onClick={handleDelete} className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700" > Delete Post </button>
           </div>
           }
         </>
@@ -205,53 +220,7 @@ useEffect(() => {
           </div>
 
           {/* Preview Frame */}
-          <div
-            className="mx-auto border rounded shadow bg-white p-4"
-            style={{ width: `${previewWidth}px` }}
-          >
-            <h2 className="text-3xl font-bold">{post.heading}</h2>
-            {post.coverImage && (
-              <img
-                src={post.coverImage}
-                alt="cover preview"
-                className="w-full rounded shadow my-4"
-              />
-            )}
-            <div className="border-t border-b border-gray-200 py-2 flex justify-between" >
-
-              <div className="text-sm flex gap-4 items-center">
-                <div className="flex items-center gap-0 cursor-pointer">
-                  <span className="text-xl">
-                👍 
-                  </span>
-                <span className="text-sm">100</span>
-                </div>
-                <Share2 className="cursor-pointer"/>
-              </div>
-              <div className="text-sm flex gap-4">
-                <span>{getReadMinutes(post.content)} min read</span>
-                <span> {getCurrentFormattedDate()} </span>
-              </div>
-            </div>
-            <div
-              className="prose max-w-none leading-relaxed [&_p]:my-2 [&_h1]:my-3 [&_h2]:my-2 [&_ul]:my-2"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-                      {/* bottom interaction */}
-                      <div className="border-t border-b border-gray-200 py-2 flex justify-between mt-6" >
-
-              <div className="text-sm flex gap-4 items-center">
-                <div className="flex items-center gap-0 cursor-pointer">
-                  <span className="text-xl">
-                👍 
-                  </span>
-                <span className="text-sm">100</span>
-                </div>
-                <Share2 className="cursor-pointer"/>
-              </div>
-
-            </div>
-          </div>
+          <BlogPreview post={post} previewWidth={previewWidth} getReadMinutes={getReadMinutes}/>
         </div>
       )}
     </div>

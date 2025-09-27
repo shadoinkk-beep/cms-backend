@@ -36,7 +36,7 @@ export async function updatePost(
     // Validate with Zod (partial)
     const validation = PostSchema.partial().safeParse(dataToUpdate);
 
-    console.log(validation)
+    // console.log(validation)
     if (!validation.success) {
       throw new Error(validation.error.issues.map((i) => i.message).join(", "));
     }

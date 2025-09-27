@@ -7,6 +7,7 @@ import getReadMinutes from "../../../components/utils/funcs";
 import { savePost } from "../../../lib/postService";
 import { toast } from "react-toastify";
 import TagMultiSelect from "../../../components/inputs/TagMultiSelect";
+import BlogPreview from "../../../components/Preview";
 
 
 export interface Post_inputable {
@@ -202,54 +203,7 @@ const handleSave = async () => {
           </div>
 
           {/* Preview Frame */}
-                    <div
-            className="mx-auto border rounded shadow bg-white p-4"
-            style={{ width: `${previewWidth}px` }}
-          >
-            <h2 className="text-3xl font-bold">{post.heading}</h2>
-            {post.coverImage && (
-              <img
-                src={post.coverImage}
-                alt="cover preview"
-                className="w-full rounded shadow my-4"
-              />
-            )}
-            <div className="border-t border-b border-gray-200 py-2 flex justify-between" >
-
-              <div className="text-sm flex gap-4 items-center">
-                <div className="flex items-center gap-0 cursor-pointer">
-                  <span className="text-xl">
-                👍 
-                  </span>
-                <span className="text-sm">100</span>
-                </div>
-                <Share2 className="cursor-pointer"/>
-              </div>
-              <div className="text-sm flex gap-4">
-                <span> {getReadMinutes(post.content)} min read </span>
-                <span> {post.date} </span>
-              </div>
-            </div>
-            <div
-              className="prose max-w-none leading-relaxed [&_p]:my-2 [&_h1]:my-3 [&_h2]:my-2 [&_ul]:my-2"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-
-            {/* bottom interaction */}
-                      <div className="border-t border-b border-gray-200 py-2 flex justify-between mt-6" >
-
-              <div className="text-sm flex gap-4 items-center">
-                <div className="flex items-center gap-0 cursor-pointer">
-                  <span className="text-xl">
-                👍 
-                  </span>
-                <span className="text-sm">100</span>
-                </div>
-                <Share2 className="cursor-pointer"/>
-              </div>
-
-                </div>
-          </div>
+                    <BlogPreview post={post} previewWidth={previewWidth} getReadMinutes={getReadMinutes}/>
         </div>
       )}
     </div>

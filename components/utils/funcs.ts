@@ -11,7 +11,6 @@ import { Timestamp } from "firebase/firestore";
 
 /** Convert Firestore Timestamp -> "DD-MM-YYYY" */
 export function formatDateFromTimestamp(ts: Timestamp): string {
-  console.log(ts)
 
   const date = ts.toDate();
   const day = String(date.getDate()).padStart(2, "0");
