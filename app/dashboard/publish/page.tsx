@@ -2,7 +2,7 @@
 
 import { useState,} from "react";
 import RichTextEditor from "../../../components/RichTextEditor";
-import { Share2 } from "lucide-react";
+import { Globe, Link, Share2 } from "lucide-react";
 import getReadMinutes from "../../../components/utils/funcs";
 import { savePost } from "../../../lib/postService";
 import { toast } from "react-toastify";
@@ -149,7 +149,7 @@ const handleSave = async () => {
           {/* Save Button */}
 
           {
-            saved != "" ?  <a href={saved}> {saved} </a> :
+            saved != "" ?  <a className="mt-6  items-center flex gap-2  w-fit px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" href={`https://authcor-landing-page.vercel.app/insights/${encodeURIComponent(saved)}`}> Go to blog <Link/> </a> :
           
 
             <div>

@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { updatePost } from "../../../../lib/updatePost";
 import BlogPreview from "../../../../components/Preview";
 import { deletePost } from "../../../../lib/deletePost";
+import { Link } from "lucide-react";
 
 export default function EditPost() {
     const { id } = useParams();
@@ -164,7 +165,8 @@ useEffect(() => {
 
           {/* Save Button */}
 {
-            saved != "" ?  <a href={saved}> {saved} </a> :
+            saved != "" ?  <a className="mt-6  items-center flex gap-2  w-fit px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" href={`https://authcor-landing-page.vercel.app/insights/${encodeURIComponent(saved)}`}> Go to blog <Link/> </a> :
+          
           
 
             <div className="flex justify-between">

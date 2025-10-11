@@ -2,6 +2,6 @@
   "/page": "app/page.js",
   "/signin/page": "app/signin/page.js",
   "/dashboard/publish/page": "app/dashboard/publish/page.js",
-  "/dashboard/edit/[id]/page": "app/dashboard/edit/[id]/page.js",
-  "/dashboard/all-posts/page": "app/dashboard/all-posts/page.js"
+  "/dashboard/all-posts/page": "app/dashboard/all-posts/page.js",
+  "/dashboard/edit/[id]/page": "app/dashboard/edit/[id]/page.js"
 }
