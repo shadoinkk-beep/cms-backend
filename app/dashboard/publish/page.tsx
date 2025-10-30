@@ -26,9 +26,7 @@ export default function AddPost() {
   const [post, setPost] = useState<Post_inputable>({
     heading: "",
     coverImage: null,
-    content: `<h1>The Future of Remote Work</h1><p>Remote work is no longer a <strong>temporary trend</strong>. Companies like <a href="https://www.microsoft.com" rel="noopener noreferrer" target="_blank">Microsoft</a> and <a href="https://www.google.com" rel="noopener noreferrer" target="_blank">Google</a> have already embraced hybrid work models.</p><h2>Key Benefits</h2><ul><li>Increased flexibility</li><li>Access to global talent</li><li><em>Better work-life balance</em></li></ul><p>But challenges remain: <u>communication</u>, <s>team isolation</s>, and <strong>security risks</strong>.</p><blockquote>“The best way to predict the future is to create it.” – Peter Drucker</blockquote><p><br></p><h3><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">Tools for Success</h3><ol><li>Zoom &amp; Teams</li><li>Notion &amp; Confluence</li><li>Slack &amp; Discord</li></ol><pre class="ql-syntax" spellcheck="false">const remoteWork = true;
-console.log('Work from anywhere:', remoteWork);
-</pre>`,
+    content: ``,
 date : new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',

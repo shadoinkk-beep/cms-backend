@@ -1058,14 +1058,8 @@ video {
 .mt-2{
   margin-top: 0.5rem;
 }
-.mt-4{
-  margin-top: 1rem;
-}
 .mt-6{
   margin-top: 1.5rem;
-}
-.mt-8{
-  margin-top: 2rem;
 }
 .block{
   display: block;
@@ -1154,12 +1148,12 @@ video {
 .w-9{
   width: 2.25rem;
 }
-.w-full{
-  width: 100%;
-}
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
+}
+.w-full{
+  width: 100%;
 }
 .max-w-5xl{
   max-width: 64rem;
@@ -1415,10 +1409,6 @@ video {
 .py-4{
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-.py-8{
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 .pt-4{
   padding-top: 1rem;

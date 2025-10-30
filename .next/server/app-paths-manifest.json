@@ -1,7 +1,9 @@
 {
-  "/page": "app/page.js",
+  "/manifest.json/route": "app/manifest.json/route.js",
   "/signin/page": "app/signin/page.js",
-  "/dashboard/publish/page": "app/dashboard/publish/page.js",
+  "/page": "app/page.js",
+  "/icon0.svg/route": "app/icon0.svg/route.js",
   "/dashboard/all-posts/page": "app/dashboard/all-posts/page.js",
+  "/dashboard/publish/page": "app/dashboard/publish/page.js",
   "/dashboard/edit/[id]/page": "app/dashboard/edit/[id]/page.js"
 }
